@@ -31,11 +31,11 @@ app.get('/', (req, res) => {
     res.render('index',{data:''})
 })
 
-app.post('/extracttextfromimage', upload.single('file'), (req, res) => {
+app.post('/extractEnglish', upload.single('file'), (req, res) => {
     console.log(req.file.path) 
   
     const config = {
-      lang: "ben",
+      lang: "eng",
       oem: 1,
       psm: 3,
     };
@@ -50,6 +50,26 @@ app.post('/extracttextfromimage', upload.single('file'), (req, res) => {
       .catch((error) => {
         console.log(error.message);
       });
+})
+app.post('/extractBangla', upload.single('file'), (req, res) => {
+  console.log(req.file.path) 
+
+  const config = {
+    lang: "ben",
+    oem: 1,
+    psm: 3,
+  };
+
+  tesseract
+    .recognize(req.file.path, config)
+    .then((text) => {
+        console.log("Result:", text);
+        
+        res.render('index',{data:text})
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
 })
 
 

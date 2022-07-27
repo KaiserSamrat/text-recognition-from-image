@@ -4,16 +4,54 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="index.css">
     <title>Extract Text From Image</title>
 </head>
+<style>
+    body{
+        background-color: aliceblue;
+    }
+  .text-output{
+    margin-top: 50px;
+    margin-left: 300px;
+    justify-content: center;
+    /* text-align: center; */
+    padding: 30px;
+  }
+  .input-class{
+    margin-top: 50px;
+    margin-left: 300px;
+  }
+  .output-btn{
+    border: 1px solid white;
+    background-color: cadetblue;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    font-weight: bolder;
+  }
+  .upload-text{
+    font-weight: bold;
+  }
+</style>
 <body>
-    <form action="/extracttextfromimage" method="post" enctype="multipart/form-data">
-        <label for="file">Upload Image File:</label>
+  <div class="input-class">
+    <form action="/extractEnglish" method="post" enctype="multipart/form-data">
+        <label for="file" class="upload-text">Upload Image File:</label>
         <input type="file" name="file" accept="image/*" required id="">
-        <button>Extract Text From Image</button>
+        <button class="output-btn">Extract English Text</button>
     </form>
+  </div>
+  <div class="input-class">
+    <form action="/extractBangla" method="post" enctype="multipart/form-data">
+        <label for="file" class="upload-text">Upload Image File:</label>
+        <input type="file" name="file" accept="image/*" required id="">
+        <button class="output-btn">Extract Bangla Text</button>
+    </form>
+  </div>
 
-    <textarea cols="100" rows="40">
+    <textarea cols="100" rows="30" class="text-output">
         <%=data%>
     </textarea>
 </body>
